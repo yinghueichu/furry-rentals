@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2022_01_11_181120) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.date "start_date", null: false
+    t.date "start_date"
     t.date "end_date"
     t.bigint "animal_id", null: false
     t.bigint "user_id", null: false
