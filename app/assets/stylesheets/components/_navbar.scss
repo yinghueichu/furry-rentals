@@ -27,3 +27,15 @@
   font-weight: 700;
   color: white;
 }
+
+.dropdown-menu {
+  background-color: #CCC4BE;
+}
+
+.dropdown-item {
+  color: white;
+  &:hover {
+    background-color: white;
+    color: #4A6163;
+  }
+}
