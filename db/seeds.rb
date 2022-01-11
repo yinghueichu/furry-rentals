@@ -6,13 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts 'Creating users...'
+User.create!([
+  {email: "testadmin@eieji.co.uk", password: "testadminuser"},
+  {email: "testuser@feik.co.uk", password: "testuseraccount"},
+  {email: "testcustomer@olej.co.uk", password: "testcustomeruser"}
+])
+
 puts 'Creating animals...'
 Animal.create!({
-  name: "Le Dindon en Laisse",
-  address: "18 Rue Beautreillis, 75004 Paris, France"
+    name: "Seahorse",
+    species: "fish",
+    address: "18 Rue Beautreillis, 75004 Paris, France",
+    user_id: 1
 })
 Animal.create!({
-  name: "Neuf et Voisins",
-  address: "Van Arteveldestraat 1, 1000 Brussels, Belgium"
+    name: "Tiger",
+    species: "feline",
+    address: "Van Arteveldestraat 1, 1000 Brussels, Belgium",
+    user_id: 2
 })
 puts 'Finished!'
