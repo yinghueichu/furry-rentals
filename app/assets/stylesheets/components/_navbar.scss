@@ -15,8 +15,12 @@
 #nav-link-overwrite {
   color: white;
   font-size: large;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #4A6163;
+  transition: background 0.2s ease;
   &:hover {
-    font-weight: bold;
+    background: #19FE98;
   }
 }
 
