@@ -35,7 +35,7 @@
 }
 
 .dropdown-menu {
-  background-color: #CCC4BE;
+  background-color: #4A6163;
 }
 
 .dropdown-item {
@@ -45,3 +45,7 @@
     color: #4A6163;
   }
 }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+ }
