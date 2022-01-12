@@ -12,7 +12,7 @@
       Be the first to book <%= @animal.name %> !
     <% else %>
       <% @animal.bookings.each do |booking| %>
-        <p><%= @animal.name %> was booked on<%= booking.start_date %></p>
+        <p><%= @animal.name %> was booked on <%= booking.start_date %></p>
       <% end %>
     <% end %>
   </div>

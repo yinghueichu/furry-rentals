@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
     @animal = Animal.find(params[:animal_id])
     @booking = Booking.new(booking_params)
     @booking.animal = @animal
+    @booking.user = current_user
     if @booking.save
       redirect_to animal_path(@animal)
     else
