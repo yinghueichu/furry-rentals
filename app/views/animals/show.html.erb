@@ -1,14 +1,19 @@
 <h1><%= @animal.name %> <small><%= @animal.address %></small></h1>
-<h2>
-  <%= pluralize @animal.bookings.size, "booking" %>
-</h2>
 
 <div id="bookings">
   <% if @animal.bookings.blank? %>
-    Be the first to leave a booking for <%= @animal.name %>
+    Be the first to book <%= @animal.name %> !
   <% else %>
     <% @animal.bookings.each do |booking| %>
       <p><%= booking.content %></p>
     <% end %>
+  <% end %>
+</div>
+
+<div class="container">
+  <%= simple_form_for [ @animal, @booking ] do |f| %>
+    <%= f.input :start_date, as: :date %>
+    <%= f.input :end_date, as: :date %>
+    <%= f.button :submit %>
   <% end %>
 </div>
