@@ -1,14 +1,14 @@
-<h1><%= @restaurant.name %> <small><%= @restaurant.address %></small></h1>
+<h1><%= @animal.name %> <small><%= @animal.address %></small></h1>
 <h2>
-  <%= pluralize @restaurant.reviews.size, "review" %>
+  <%= pluralize @animal.bookings.size, "booking" %>
 </h2>
 
-<div id="reviews">
-  <% if @restaurant.reviews.blank? %>
-    Be the first to leave a review for <%= @restaurant.name %>
+<div id="bookings">
+  <% if @animal.bookings.blank? %>
+    Be the first to leave a booking for <%= @animal.name %>
   <% else %>
-    <% @restaurant.reviews.each do |review| %>
-      <p><%= review.content %></p>
+    <% @animal.bookings.each do |booking| %>
+      <p><%= booking.content %></p>
     <% end %>
   <% end %>
 </div>
