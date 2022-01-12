@@ -1,19 +1,27 @@
-<h1><%= @animal.name %> <small><%= @animal.address %></small></h1>
+<div class="container">
+  <h1>Meet <%= @animal.name %> !</h1>
+  <p><%= @animal.name %> is a <%= @animal.species %>, it has <%= pluralize @animal.bookings.size, "booking" %> </p>
+
+
+
+</div>
 
 <div id="bookings">
-  <% if @animal.bookings.blank? %>
-    Be the first to book <%= @animal.name %> !
-  <% else %>
-    <% @animal.bookings.each do |booking| %>
-      <p><%= booking.content %></p>
+  <div class="container">
+    <% if @animal.bookings.blank? %>
+      Be the first to book <%= @animal.name %> !
+    <% else %>
+      <% @animal.bookings.each do |booking| %>
+        <p><%= @animal.name %> was booked on<%= booking.start_date %></p>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
 <div class="container">
   <%= simple_form_for [ @animal, @booking ] do |f| %>
     <%= f.input :start_date, as: :date %>
     <%= f.input :end_date, as: :date %>
-    <%= f.button :submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   <% end %>
 </div>

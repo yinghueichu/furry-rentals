@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'animals#index'
-  resources :animals, only: [:index, :create, :new, :show] do
-    resources :bookings, only: [:index, :create, :show]
+  resources :animals, only: [:create, :new]
+  resources :animals, only: [:index, :show] do
+    resources :bookings, only: :create
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
