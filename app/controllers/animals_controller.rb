@@ -3,7 +3,8 @@ class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update]
 
   def index
-    @animals = Animal.all
+
+    @animals= Animal.all
   end
 
   def show
@@ -16,9 +17,9 @@ class AnimalsController < ApplicationController
 
   def create
     @animal = Animal.new(strong_params)
-    @animal.user = @animal
-    if @animal.save
-      redirect_to animal_path(@animal)
+    @animal.user = current_user
+    if @animal.save!
+      redirect_to animals_path
     else
       render :new
     end
@@ -38,6 +39,6 @@ class AnimalsController < ApplicationController
   end
 
   def strong_params
-    params.require(:animal).permit(:name, :species, :address)
+    params.require(:animal).permit(:name, :species, :address, :description, :available)
   end
 end
