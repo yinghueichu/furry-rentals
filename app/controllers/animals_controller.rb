@@ -3,7 +3,6 @@ class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update]
 
   def index
-
     @animals= Animal.all
   end
 
@@ -41,6 +40,6 @@ class AnimalsController < ApplicationController
   end
 
   def strong_params
-    params.require(:animal).permit(:name, :species, :address, :description, :available)
+    params.require(:animal).permit(:name, :species, :address, :description, :available, :photo)
   end
 end
