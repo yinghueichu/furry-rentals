@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Meet <%= @animal.name %> !</h1>
   <p><%= @animal.name %> is a <%= @animal.species %>, it has <%= pluralize @animal.bookings.size, "booking" %> </p>
-  <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
+  <%= cl_image_tag @animal.photo.key, height: 300, width: 400, crop: :fill %>
 
 <div id="bookings">
     <% if @animal.bookings.blank? %>
