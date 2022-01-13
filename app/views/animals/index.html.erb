@@ -1,10 +1,23 @@
+
+<%# <h2>All animals for rent</h2>
+<% @animals.each do |animal| %>
+<%#   <%= animal.name %>
+<%# <% end %>
+
 <h2>Ours lovely animals for rent</h2>
 
-<div class="container">
+<div class="main-container">
   <div class="cards">
     <% @animals.each do |animal| %>
       <div class="card">
-        <%= link_to animal.name, animal_path(animal) %>
+        <img src="https://picsum.photos/id/237/200/300" />
+        <div class="card-infos">
+          <div class="div">
+            <%= link_to animal.name, animal_path(animal) %>
+            <%= animal.species %>
+          </div>
+          <h2 class="card-availabilty">available</h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-user avatar-bordered" />
       </div>
     <% end %>
   </div>
