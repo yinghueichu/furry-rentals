@@ -5,23 +5,55 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts ‘Creating users...’
+
+puts 'Creating users...'
 User.create!([
-  {email: “testadmin@eieji.co.uk”, password: “testadminuser”},
-  {email: “testuser@feik.co.uk”, password: “testuseraccount”},
-  {email: “testcustomer@olej.co.uk”, password: “testcustomeruser”}
+  {email: "testadmin@eieji.co.uk", password: "testadminuser"},
+  {email: "testuser@feik.co.uk", password: "testuseraccount"},
+  {email: "testcustomer@olej.co.uk", password: "testcustomeruser"},
+  {email: "honey@pooh.fr", password: "honeyhoney"}
 ])
-puts ‘Creating animals...’
+
+puts "#{User.count} users created"
+puts 'Creating animals...'
+
 Animal.create!({
-    name: “Seahorse”,
-    species: “fish”,
-    address: “18 Rue Beautreillis, 75004 Paris, France”,
+    name: "Karen",
+    species: "Seahorse",
+    address: "18 Rue Beautreillis, 75004 Paris, France",
     user_id: 1
 })
 Animal.create!({
-    name: “Tiger”,
-    species: “feline”,
-    address: “Van Arteveldestraat 1, 1000 Brussels, Belgium”,
+    name: "George",
+    species: "Tiger",
+    address: "Van Arteveldestraat 1, 1000 Brussels, Belgium",
     user_id: 2
 })
-puts ‘Finished!’
+Animal.create!({
+    name: "Daniel",
+    species: "Hedgehog",
+    address: "Avenue Hoche, 75008 Paris, France",
+    user_id: 3
+})
+Animal.create!({
+    name: "Pamela",
+    species: "Kangaroo",
+    address: "Avenue Hoche, 75008 Paris, France",
+    user_id: 3
+})
+Animal.create!({
+    name: "Jojo",
+    species: "Rabbit",
+    address: "Avenue Hoche, 75008 Paris, France",
+    user_id: 3
+})
+Animal.create!({
+    name: "Daria",
+    species: "Wallaby",
+    address: "Avenue Hoche, 75008 Paris, France",
+    user_id: 3
+})
+
+puts "#{Animal.count} animals created"
+puts 'Finished!'
+

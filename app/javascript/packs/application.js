@@ -7,6 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+// import 'controllers'
 
 Rails.start()
 Turbolinks.start()
@@ -20,11 +21,33 @@ ActiveStorage.start()
 
 // External imports
 import "bootstrap";
+import "stimulus";
+import "stimulus-flatpickr"
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+});
+
+import { Application } from 'stimulus'
+import { definitionsFromContext } from 'stimulus/webpack-helpers'
+
+const application = Application.start()
+// const context = require.context("./controllers", true, /\.js$/)
+
+// Import style for flatpickr
+require("flatpickr/dist/flatpickr.css")
+
+// Manually register Flatpickr as a stimulus controller
+const Flatpickr = require('flatpickr');
+application.register('flatpickr', Flatpickr)
+
+flatpickr(".datepicker", {
+  minDate: new Date,
+  altInput: true,
 });
