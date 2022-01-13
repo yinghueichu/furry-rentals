@@ -1,5 +1,6 @@
 <div class="container">
   <h1>Meet <%= @animal.name %> !</h1>
+  <h3><%= @animal.name %>is currently <%= @animal.available ? 'free for booking' : 'not available'%>.</h3>
   <p><%= @animal.name %> is a <%= @animal.species %>, it has <%= pluralize @animal.bookings.size, "booking" %> </p>
 
 <div id="bookings">
@@ -7,7 +8,7 @@
       Be the first to book <%= @animal.name %> !
     <% else %>
       <% @animal.bookings.each do |booking| %>
-        <p><%= @animal.name %> was booked on <%= booking.start_date %> by <%= booking.user.email %></p>
+        <p><%= @animal.name %> is booked on <%= booking.start_date %> by <%= booking.user.email %></p>
       <% end %>
     <% end %>
   </div>
@@ -17,4 +18,7 @@
     <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker"} %>
     <%= f.submit class: 'btn btn-primary' %>
   <% end %>
+
+  <%= link_to "Update availability", edit_animal_path, class: "btn btn-primary"%>
+
 </div>

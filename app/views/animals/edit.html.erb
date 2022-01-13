@@ -1,0 +1,8 @@
+<div class="container">
+  <h2>Update <%= @animal.name %>'s availability</h2>
+
+  <%= simple_form_for @animal do |f| %>
+  <%= f.check_box :available, class: "custom-control-input" %>
+  <%= f.button :submit %>
+  <% end %>
+</div>
