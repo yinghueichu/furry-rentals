@@ -6,3 +6,10 @@
   <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>
 </div>
+
+<div id="client_approved_buttons" class="btn-group" data-toggle="buttons-radio">
+  <%= simple_form_for @animal do |f| %>
+  <%= f.input :available, as: :hidden %>
+  <a class="btn" data-value="1">Yes</a>
+  <a class="btn" data-value="0">No</a>
+</div>
