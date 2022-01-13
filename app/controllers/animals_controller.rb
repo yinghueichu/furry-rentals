@@ -29,7 +29,9 @@ class AnimalsController < ApplicationController
   end
 
   def update
-    @animal.update(params[:animal])
+    @animal.update(strong_params)
+
+    redirect_to animal_path(@animal)
   end
 
   private

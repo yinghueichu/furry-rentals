@@ -1,6 +1,9 @@
 <div class="container">
   <h1>Meet <%= @animal.name %> !</h1>
-  <h3><%= @animal.name %>is currently <%= @animal.available ? 'free for booking' : 'not available'%>.</h3>
+  <div class="d-flex justify-content-start">
+    <h3><%= @animal.name %>is currently <%= @animal.available ? 'free for booking' : 'not available'%>.</h3>
+    <div class="ml-3"><%= link_to "Update availability", edit_animal_path, class: "btn btn-primary"%></div>
+  </div>
   <p><%= @animal.name %> is a <%= @animal.species %>, it has <%= pluralize @animal.bookings.size, "booking" %> </p>
 
 <div id="bookings">
@@ -19,6 +22,6 @@
     <%= f.submit class: 'btn btn-primary' %>
   <% end %>
 
-  <%= link_to "Update availability", edit_animal_path, class: "btn btn-primary"%>
+
 
 </div>
