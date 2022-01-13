@@ -9,6 +9,7 @@
       <%= f.input :address, placeholder: "London" %>
       <%= f.input :available, as: :radio_buttons, collection: ['Yes', 'No'] %>
       <%= f.submit class: 'btn btn-primary'  %>
+      <%= f.input :photo, as: :file %>
       <% end %>
     </div>
   </div>
