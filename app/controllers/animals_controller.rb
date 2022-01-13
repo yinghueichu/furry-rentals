@@ -2,7 +2,6 @@ class AnimalsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index, :root]
 
   def index
-
     @animals= Animal.all
   end
 
@@ -28,6 +27,6 @@ class AnimalsController < ApplicationController
   private
 
   def strong_params
-    params.require(:animal).permit(:name, :species, :address, :description, :available)
+    params.require(:animal).permit(:name, :species, :address, :description, :available, :photo)
   end
 end
