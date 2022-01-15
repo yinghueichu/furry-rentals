@@ -3,7 +3,13 @@ class AnimalsController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update]
 
   def index
-    @animals= Animal.all
+    @animals= Animal.where.not(latitude: nil, longitude:nil)
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   def show
