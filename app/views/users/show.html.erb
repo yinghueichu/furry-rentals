@@ -1,0 +1,10 @@
+<div class="container">
+  <h4>Welcome back <%= @user.email %> !</h4>
+
+  <div>
+  <h2>My bookings as a</h2>
+  <%= link_to "Rentor", bookings_path(current_user), class: "btn btn-primary" %>
+  <%= link_to "Owner", "#", class: "btn btn-warning" %>
+
+  </div>
+</div>
