@@ -4,10 +4,10 @@ class AnimalsController < ApplicationController
 
   def index
     @animals= Animal.where.not(latitude: nil, longitude:nil)
-    @markers = @flats.geocoded.map do |flat|
+    @markers = @animals.geocoded.map do |animal|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: animal.latitude,
+        lng: animal.longitude
       }
     end
   end
