@@ -1,0 +1,8 @@
+<div class="container">
+  <h2>Update <%= @animal.name %>'s availability</h2>
+
+  <%= simple_form_for @animal do |f| %>
+  <%= f.check_box :available, as: :boolean, checked_value: true, unchecked_value: false, wrapper: :bootstrap_toggle %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>

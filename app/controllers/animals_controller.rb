@@ -1,12 +1,12 @@
 class AnimalsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index, :root]
+  before_action :set_animal, only: [:show, :edit, :update]
 
   def index
     @animals= Animal.all
   end
 
   def show
-    @animal = Animal.find(params[:id])
     @booking = Booking.new
   end
 
@@ -24,7 +24,20 @@ class AnimalsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @animal.update(strong_params)
+
+    redirect_to animal_path(@animal)
+  end
+
   private
+
+  def set_animal
+    @animal = Animal.find(params[:id])
+  end
 
   def strong_params
     params.require(:animal).permit(:name, :species, :address, :description, :available, :photo)
