@@ -6,7 +6,7 @@
   <% @bookings.each do |booking| %>
   <div class="p-2">
     <div class="card-product">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+      <%= cl_image_tag booking.animal.photo.key %>
       <div class="card-product-infos">
           <h2><%= booking.animal.name %></h2>
           <p><%= booking.animal.species %></p>
