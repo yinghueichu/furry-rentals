@@ -6,7 +6,11 @@
   <% @bookings.each do |booking| %>
   <div class="p-2">
     <div class="card-product">
-      <%= cl_image_tag booking.animal.photo.key %>
+      <%if  booking.animal.photo.attached? %>
+        <%= cl_image_tag booking.animal.photo.key%>
+      <% else %>
+        <img src="https://source.unsplash.com/random/300×300/?animal">
+      <% end %>
       <div class="card-product-infos">
           <h2><%= booking.animal.name %></h2>
           <p><%= booking.animal.species %></p>
