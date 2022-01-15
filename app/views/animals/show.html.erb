@@ -1,27 +1,36 @@
 <div class="container">
   <h1>Meet <%= @animal.name %> !</h1>
   <div class="d-flex justify-content-start">
-    <h3><%= @animal.name %>is currently <%= @animal.available ? 'free for booking' : 'not available'%>.</h3>
-    <div class="ml-3"><%= link_to "Update availability", edit_animal_path, class: "btn btn-primary"%></div>
-  </div>
-  <p><%= @animal.name %> is a <%= @animal.species %>, it has <%= pluralize @animal.bookings.size, "booking" %> </p>
-  <%= cl_image_tag @animal.photo.key, height: 300, width: 400, crop: :fill %>
 
-<div id="bookings">
-    <% if @animal.bookings.blank? %>
-      Be the first to book <%= @animal.name %> !
-    <% else %>
-      <% @animal.bookings.each do |booking| %>
-        <p><%= @animal.name %> is booked on <%= booking.start_date %> by <%= booking.user.email %></p>
-      <% end %>
+    <%# <div class="ml-3"><%= link_to "Update availability", edit_animal_path, class: "btn btn-primary"%></div>
+    <h3><%= @animal.name.capitalize %> is a <%= @animal.species %></h3>
+    <p><%= @animal.name.capitalize %> is currently <%= @animal.available ? 'available for booking' : 'not available'%>.</p>
+    <%= cl_image_tag @animal.photo.key, height: 300, width: 400, crop: :fill %>
+    <h4>Animal Description : </h4>
+    <p><%= @animal.description %></p>
+    <h4>Book <%= @animal.name.capitalize %></h4>
+
+
+    <%= simple_form_for [ @animal, @booking ] do |f| %>
+      <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker"} %>
+      <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker"} %>
+      <%= f.submit class: 'btn btn-primary' %>
     <% end %>
+    <br/>
+    <h4>Past bookings: <%= @animal.name.capitalize %></h4>
+    <p><%= @animal.name.capitalize %> has been booked <%= pluralize @animal.bookings.size, "times" %> </p>
+
+    <div id="bookings">
+      <% if @animal.bookings.blank? %>
+        Be the first to book <%= @animal.name.capitalize %> !
+      <% else %>
+        <% @animal.bookings.each do |booking| %>
+          <p><%= link_to @animal.name.capitalize, bookings_path %> has been booked by <%= booking.user.email %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%= link_to "View my bookings", bookings_path, class:"btn btn-primary" %>
+
   </div>
-
-  <%= simple_form_for [ @animal, @booking ] do |f| %>
-    <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker"} %>
-    <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker"} %>
-    <%= f.submit class: 'btn btn-primary' %>
-  <% end %>
-
-
 </div>
