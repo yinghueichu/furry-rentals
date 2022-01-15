@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <div class="footer-links">
-            <%= link_to "Profile", user_path(current_user) %>
+            <%= link_to "Profile", user_path(current_user) if user_signed_in? %>
           </div>
         <li class="nav-item dropdown">
           <%= image_tag "https://source.unsplash.com/random/300x300", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

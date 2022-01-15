@@ -2,9 +2,11 @@
   <h4>Welcome back <%= @user.email %> !</h4>
 
   <div>
-  <h2>My bookings as a</h2>
-  <%= link_to "Rentor", bookings_path(current_user), class: "btn btn-primary" %>
-  <%= link_to "Owner", "#", class: "btn btn-warning" %>
-
+    <h2>My bookings as a</h2>
+    <%= link_to "Rentor", bookings_path(current_user), class: "btn btn-primary" %>
+    <%= link_to "Owner", "#", class: "btn btn-warning" %>
+  </div>
+    <%= link_to "Put new animal up for rent", new_animal_path, class: "btn btn-primary" %>
+  <div>
   </div>
 </div>
