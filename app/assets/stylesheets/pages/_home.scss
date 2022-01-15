@@ -28,3 +28,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+.div_wrapper {
+  min-height: calc(100vh - 100px - 85px);
+  // Ici la taille du wrapper va être égale à 
+  padding: 20px;
+}
