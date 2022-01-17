@@ -7,10 +7,10 @@
 
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
   flex-grow: 1;
-  padding: 16px;
+  margin-top: 16px;
 }
 
 .main-container {
@@ -31,6 +31,6 @@
 
 .div_wrapper {
   min-height: calc(100vh - 100px - 85px);
-  // Ici la taille du wrapper va être égale à 
-  padding: 20px;
+  // Ici la taille du wrapper va être égale à
+  padding: 20px 50px;
 }
