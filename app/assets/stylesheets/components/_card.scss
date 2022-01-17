@@ -23,13 +23,15 @@
   margin: 0;
 }
 
-
 .card .card-infos {
   padding: 16px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: space-evenly;
+  align-items: flex-start;
   position: relative;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 
 .card-infos .card-user {
