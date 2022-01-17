@@ -32,5 +32,13 @@
 
     <%= link_to "View my bookings", bookings_path, class:"btn btn-primary" %>
 
+    <div class="reviews">
+      <% @animal.bookings.each do |booking|  %>
+        <P><%= booking.review.rating %></P>
+        <P><%= booking.review.content %></P>
+        <P>by <%= booking.user.email %></P>
+      <% end %>
+    </div>
+
   </div>
 </div>

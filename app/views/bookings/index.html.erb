@@ -15,6 +15,7 @@
           <h2><%= booking.animal.name.capitalize %></h2>
           <p><%= booking.animal.species.capitalize %></p>
           <p>Start date: <%= booking.start_date %> | End date: <%= booking.end_date %> </p>
+          <%= link_to "Leave a review", new_review_path(booking) %>
       </div>
     </div>
   </div>
