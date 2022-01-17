@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :bookings do
+    member do
+      resources :reviews, only: [:new, :create]
+    end
+  end
+
   resources :animals, only: [:index, :show, :create, :new, :edit, :update] do
     resources :bookings, only: [:create]
   end
