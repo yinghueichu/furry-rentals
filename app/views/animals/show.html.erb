@@ -6,13 +6,14 @@
 
       <%# <div class="ml-3"><%= link_to "Update availability", edit_animal_path, class: "btn btn-primary"%><%# </div> %>
       <p><%= @animal.name.capitalize %> is currently <%= @animal.available ? 'available for booking' : 'not available'%>.</p>
-      <div>
+      <div class="mb-3">
         <%= cl_image_tag @animal.photo.key, height: 300, width: 400, crop: :fill %>
       </div>
 
       <h4>Animal Description : </h4>
       <p><%= @animal.description %></p>
       <h4>Book <%= @animal.name.capitalize %></h4>
+      <p>Owner :<%= @animal.user.name%></p>
       <%= link_to "Check availability", show_available_animal_path(@animal), class: "btn btn-primary" %>
       <%= link_to "View my bookings", bookings_path(@animal), class:"btn btn-primary" %>
     </div>
@@ -28,7 +29,7 @@
   <div class="reviews">
     <% @animal.bookings.order(created_at: :desc).each do |booking|  %>
       <% if booking.review.blank? == false %>
-        <P><i class="fas fa-star"></i> <%= booking.review.rating %> <%= booking.review.content %> by <%= booking.user.email %></P>
+        <P><i class="fas fa-star"></i> <%= booking.review.rating %> <%= booking.review.content %> by <%= booking.user.name%></P>
       <% end %>
     <% end %>
   </div>
