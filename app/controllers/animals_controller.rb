@@ -47,6 +47,11 @@ class AnimalsController < ApplicationController
   end
 
   def show_available
+    @booking = Booking.new
+  end
+
+  def available?(from, to)
+    bookings.where('start_date <= ? AND end_date >= ?', to, from).none?
   end
 
 

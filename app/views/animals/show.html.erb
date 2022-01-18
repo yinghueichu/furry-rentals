@@ -39,8 +39,6 @@
       <% @animal.bookings.each do |booking|  %>
         <% if booking.review.blank? == false %>
           <P><i class="fas fa-star"></i> <%= booking.review.rating %> <%= booking.review.content %> by <%= booking.user.email %></P>
-
-
         <% end %>
       <% end %>
     </div>
