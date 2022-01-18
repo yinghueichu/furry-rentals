@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  scope :having_dob_between, ->(start_date, end_date) { where(dob: start_date..end_date) }
+
 
   def index
     @bookings = Booking.where(user: current_user)
