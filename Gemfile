@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.4'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.21.0'
-gem 'geocoder'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.4'
@@ -35,6 +34,12 @@ gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'
+
+gem 'geocoder'
+gem 'jquery-rails' # dependency of daterangepicker
+gem 'momentjs-rails' # dependency of daterangepicker
+gem 'bootstrap-daterangepicker-rails'
+gem 'turbolinks_render'
 
 group :development, :test do
   gem 'pry-byebug'

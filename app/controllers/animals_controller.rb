@@ -1,6 +1,6 @@
 class AnimalsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:show, :index, :root]
-  before_action :set_animal, only: [:show, :edit, :update]
+  before_action :set_animal, only: [:show, :edit, :update, :show_available]
 
   def index
     @animals= Animal.where.not(latitude: nil, longitude:nil)
@@ -9,6 +9,13 @@ class AnimalsController < ApplicationController
         lat: animal.latitude,
         lng: animal.longitude
       }
+    end
+
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR species ILIKE :query"
+      @animals = Animal.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @animals = Animal.all
     end
   end
 
@@ -39,13 +46,12 @@ class AnimalsController < ApplicationController
     redirect_to animal_path(@animal)
   end
 
-  def index
-    if params[:query].present?
-      sql_query = "name ILIKE :query OR species ILIKE :query"
-      @animals = Animal.where(sql_query, query: "%#{params[:query]}%")
-    else
-      @animals = Animal.all
-    end
+  def show_available
+    @booking = Booking.new
+  end
+
+  def available?(from, to)
+    bookings.where('start_date <= ? AND end_date >= ?', to, from).none?
   end
 
 

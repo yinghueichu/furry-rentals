@@ -14,6 +14,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :animals do
+    member do
+      get :show_available
+    end
+  end
+
+
   resources :animals, only: [:index, :show, :create, :new, :edit, :update] do
     resources :bookings, only: [:create]
   end
