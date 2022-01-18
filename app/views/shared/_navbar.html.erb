@@ -1,11 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "/animals", class: "navbar-brand" do %>
-      <div class="d-flex align-items-center">
-        <%= image_tag "https://acegif.com/wp-content/gifs/cute-bunny-gif-69.gif" %>
-        <h4 id="brand-name">FURRY RENTALS</h4>
-      </div>
-    <% end %>
+    <%= link_to "FURRY RENTALS", animals_path, class: "navbar-brand", id: "brand-name" %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-iconn"></span>
@@ -14,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
           <div class="footer-links">
-            <%= link_to "Profile", user_path(current_user) if user_signed_in? %>
+            <%= link_to "Profile", (user_path(current_user) if user_signed_in?), class: "nav-link" %>
           </div>
         <li class="nav-item dropdown">
           <%= image_tag "https://source.unsplash.com/random/300x300", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

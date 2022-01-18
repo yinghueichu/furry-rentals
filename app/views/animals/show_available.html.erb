@@ -5,7 +5,7 @@
 
 <%# <%= javascript_include_tag "daterangepicker_initializer.js" %>
 
-<h2>Test available page</h2>
+<h2>Book <%= @animal.name %> now!</h2>
 
 <%= simple_form_for [ @animal, @booking ] do |f| %>
   <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker"} %>
@@ -13,46 +13,19 @@
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
 
-<% today = Date.today.strftime("%d/%m/%Y").to_s %>
-<% tomorrow = (Date.today + 1).strftime("%d/%m/%Y").to_s %>
-<input type="text" name="daterange" value="#{Date.today.strftime("%d/%m/%Y")}" />
+<%# <%= render "components/datepicker" %>
+
+<br>
 
 
+    <p><%= @animal.name.capitalize %> has been booked <%= pluralize @animal.bookings.size, "times" %> </p>
 
-<%= simple_form_for [ @animal, @booking ] do |f| %>
-  <%= f.input :start_date, as: :string, required: true, input_html: {class: "daterangepicker"} %>
-  <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker"} %>
-  <%= f.submit class: 'btn btn-primary' %>
-<% end %>
-
-
-<script>
-$(function() {
-  $('input[name="daterange"]').daterangepicker({
-    showDropdowns: true,
-    opens: 'left'
-  }, function(start, end, label) {
-    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-    console.log(start._d);
-    console.log(end._d);
-    const start_date = start._d
-    const end_date = end._d
-    res = $.ajax(
-    url: '#{new_booking_path}'
-    method: 'GET'
-    data:
-      param: variable
-    dataType: 'json'
-    success: (res) ->
-      res
-      console.log(res)
-  );
-  });
-</script>
-
-<%= form_for(:booking, class: 'form-inline', url: new_booking_path, method: :get) do |form| %>
-  <div class="form-group">
-    <%= form.text_field :start_date, class: 'form-control', data: { behavior: 'daterangepicker' } %>
-  </div>
-  <%= form.submit "Search", class: 'btn btn-success' %>
-<% end %>
+    <div id="bookings">
+      <% if @animal.bookings.blank? %>
+        Be the first to book <%= @animal.name.capitalize %> !
+      <% else %>
+        <% @animal.bookings.each do |booking| %>
+          <p><%= link_to @animal.name.capitalize, bookings_path %> has been booked by <%= booking.user.email %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
+        <% end %>
+      <% end %>
+    </div>

@@ -2,7 +2,8 @@ class BookingsController < ApplicationController
 
 
   def index
-    @bookings = Booking.where(user: current_user)
+    @bookings = Booking.all.order(created_at: :desc)
+    @user_bookings = Booking.where(user: current_user).order(created_at: :desc)
   end
 
   def create
@@ -11,7 +12,7 @@ class BookingsController < ApplicationController
     @booking.animal = @animal
     @booking.user = current_user
     if @booking.save
-      redirect_to animal_path(@animal)
+      redirect_to bookings_path(@animal)
     else
       render 'animals/show'
     end

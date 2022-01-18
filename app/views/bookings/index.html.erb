@@ -3,7 +3,7 @@
 
   <div class="p-3"><h2>My bookings</h2></div>
 
-  <% @bookings.each do |booking| %>
+  <% @user_bookings.each do |booking| %>
   <div class="p-2">
     <div class="card-product">
       <%if  booking.animal.photo.attached? %>

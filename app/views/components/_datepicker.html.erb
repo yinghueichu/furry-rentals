@@ -1,0 +1,30 @@
+<div data-controller="insert-dates">
+  <div data-insert-dates-target="dates">
+    <% today = Date.today.strftime("%d/%m/%Y").to_s %>
+    <% tomorrow = (Date.today + 1).strftime("%d/%m/%Y").to_s %>
+    <input type="text" name="daterange" value="#{Date.today.strftime("%d/%m/%Y")}" data-action="insert-dates#send" />
+  </div>
+</div>
+
+<div data-controller="insert-dates">
+
+    <%= simple_form_for [ @animal, @booking ], data: { insert_dates_target: 'dates', action: 'submit->insert-dates#send' } do |f| %>
+      <%= f.input :start_date, as: :string, required: true, input_html: {class: "datepicker"} %>
+      <%= f.input :end_date, as: :string, required: true, input_html: {class: "datepicker"} %>
+      <%= f.submit class: 'btn btn-primary' %>
+    <% end %>
+
+</div>
+
+
+
+
+<script>
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+    opens: 'left'
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+  });
+});
+</script>

@@ -12,27 +12,12 @@
 
 
 
-    <br/>
-    <h4>Past bookings: <%= @animal.name.capitalize %></h4>
-    <p><%= @animal.name.capitalize %> has been booked <%= pluralize @animal.bookings.size, "times" %> </p>
+    <%= link_to "Check availability", show_available_animal_path(@animal), class: "btn btn-primary" %>
 
-    <div id="bookings">
-      <% if @animal.bookings.blank? %>
-        Be the first to book <%= @animal.name.capitalize %> !
-      <% else %>
-        <% @animal.bookings.each do |booking| %>
-          <p><%= link_to @animal.name.capitalize, bookings_path %> has been booked by <%= booking.user.email %> from <%= booking.start_date %> to <%= booking.end_date %> </p>
-        <% end %>
-      <% end %>
-    </div>
-
-    <%= link_to "Check availability", show_available_animal_path, class: "btn btn-primary" %>
-
-    <%= link_to "View my bookings", bookings_path, class:"btn btn-primary" %>
+    <%= link_to "View my bookings", bookings_path(@animal), class:"btn btn-primary" %>
 
     <div class="reviews">
-
-      <% @animal.bookings.each do |booking|  %>
+      <% @animal.bookings.order(created_at: :desc).each do |booking|  %>
         <% if booking.review.blank? == false %>
           <P><i class="fas fa-star"></i> <%= booking.review.rating %> <%= booking.review.content %> by <%= booking.user.email %></P>
         <% end %>
