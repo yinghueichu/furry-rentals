@@ -36,6 +36,10 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'geocoder'
+gem 'jquery-rails' # dependency of daterangepicker
+gem 'momentjs-rails' # dependency of daterangepicker
+gem 'bootstrap-daterangepicker-rails'
+
 
 group :development, :test do
   gem 'pry-byebug'
