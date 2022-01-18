@@ -7,7 +7,8 @@ class AnimalsController < ApplicationController
     @markers = @animals.geocoded.map do |animal|
       {
         lat: animal.latitude,
-        lng: animal.longitude
+        lng: animal.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { animal: animal })
       }
     end
 
@@ -21,6 +22,12 @@ class AnimalsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @markers = [
+     {
+        lat: @animal.latitude,
+        lng: @animal.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { animal: @animal })
+      }]
   end
 
   def new
