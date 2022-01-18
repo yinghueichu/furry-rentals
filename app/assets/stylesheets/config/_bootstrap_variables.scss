@@ -23,3 +23,10 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+@media (min-width: 375px) {
+  /* line 154, node_modules/bootstrap/scss/_navbar.scss */
+  .navbar-expand-sm {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+}
