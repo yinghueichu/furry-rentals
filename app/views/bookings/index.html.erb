@@ -1,23 +1,26 @@
-<%= link_to '< Back to the previous page', :back %>
 <div class="container">
-
-  <div class="p-3"><h2>My bookings</h2></div>
-
+  <div class="title"><h2>My bookings</h2></div>
+  <div class="bookings">
   <% @user_bookings.each do |booking| %>
-  <div class="p-2">
-    <div class="card-product">
-      <%if  booking.animal.photo.attached? %>
-        <%= cl_image_tag booking.animal.photo.key%>
-      <% else %>
-        <img src="https://source.unsplash.com/random/300×300/?animal">
-      <% end %>
-      <div class="card-product-infos">
-          <h2><%= booking.animal.name.capitalize %></h2>
-          <p><%= booking.animal.species.capitalize %></p>
-          <p>Start date: <%= booking.start_date %> | End date: <%= booking.end_date %> </p>
-          <%= link_to "Leave a review", new_review_path(booking) %>
-      </div>
+
+      <div class="card-booking">
+        <div class="card-animal-img">
+          <%if  booking.animal.photo.attached? %>
+            <%= cl_image_tag booking.animal.photo.key%>
+          <% else %>
+            <img src="https://source.unsplash.com/random/300×300/?animal">
+          <% end %>
+        </div>
+        <div class="card-booking-infos">
+            <h3><%= booking.animal.name.capitalize %></h3>
+            <p><%= booking.animal.species.capitalize %></p>
+            <h5><%= booking.start_date %> - <%= booking.end_date %> </h5>
+            <%= link_to "Leave a review", new_review_path(booking), id: "review-link" %>
+        </div>
+
     </div>
-  </div>
+
+
   <% end %>
+  </div>
 </div>
