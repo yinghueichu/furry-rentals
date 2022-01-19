@@ -10,7 +10,8 @@
           </span>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <% if user_signed_in? %>
-              <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "My bookings", bookings_path(current_user), class: "dropdown-item" %>
+              <%= link_to "My animals", my_animals_animals_path(current_user), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             <% else %>
               <%= link_to "Sign up", new_user_registration_path, class: "dropdown-item" %>
