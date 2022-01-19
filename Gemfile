@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'devise'
 
 gem 'geocoder'
+gem 'jquery-rails'
 gem 'turbolinks_render'
 
 group :development, :test do
