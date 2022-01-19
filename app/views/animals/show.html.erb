@@ -1,37 +1,52 @@
-<div class="container">
+<div class="animal-img">
+  <%= cl_image_tag @animal.photo.key, height:280, width: 375, crop: :fill%>
+</div>
 
-  <h1>Meet <%= @animal.name %>, the <%= @animal.species %> !</h1>
-  <div class="main-container justify-content-between align-items-start">
-    <div class="contenu-info">
+<% if @animal.available %>
+  <%= link_to "Check availability", show_available_animal_path(@animal), class: "btn btn-primary", id: "btn-available" %>
+<% else %>
+  <%= link_to "Not available", "#"%>
+<% end %>
 
-      <%# <div class="ml-3"><%= link_to "Update availability", edit_animal_path, class: "btn btn-primary"%><%# </div> %>
-      <p><%= @animal.name.capitalize %> is currently <%= @animal.available ? 'available for booking' : 'not available'%>.</p>
-      <div class="mb-3">
-        <%= cl_image_tag @animal.photo.key, height: 300, width: 400, crop: :fill %>
-      </div>
+<div class="container" id="animal-profile">
+  <div class="title">
+    <h2 id="animal-name"><%= @animal.name %></h2>
+    <div class="rating-details d-flex justify-content-start">
+      <h5><i class="fas fa-star" id="rating-star"></i></h5>
+      <P>&nbsp;&nbsp;4.58 (12 reviews)</P>
+    </div>
 
-      <h4>Animal Description : </h4>
+
+  </div>
+
+    <div class="animal-info">
+      <h5><%= @animal.species %></h5>
+      <p>Owner:<%= @animal.user.name%></p>
       <p><%= @animal.description %></p>
-      <h4>Book <%= @animal.name.capitalize %></h4>
-      <p>Owner :<%= @animal.user.name%></p>
-      <%= link_to "Check availability", show_available_animal_path(@animal), class: "btn btn-primary" %>
-      <%= link_to "View my bookings", bookings_path(@animal), class:"btn btn-primary" %>
+
     </div>
 
-    <div id="map"
-      style="width: 50%; height: 500px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
-  </div>
-  <br>
-  <h4>Reviews : </h4>
-  <div class="reviews">
-    <% @animal.bookings.order(created_at: :desc).each do |booking|  %>
-      <% if booking.review.blank? == false %>
-        <P><i class="fas fa-star"></i> <%= booking.review.rating %> <%= booking.review.content %> by <%= booking.user.name%></P>
+    <hr/>
+
+
+    <div id="map" style="width: 100%; height: 200px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+    <hr/>
+    <div class="reviews">
+    <% sum = 0 %>
+    <% number_of_bookings = @animal.bookings.count %>
+      <% @animal.bookings.order(created_at: :desc).each do |booking|  %>
+          <% if booking.review.blank? == false %>
+            <div id="card-review">
+              <P><i class="fas fa-star"></i> <%= booking.review.rating %> </P>
+              <P><%= booking.review.content %></P>
+              <p>by <%= booking.user.name%></p>
+            </div>
+
+            <% sum = sum + booking.review.rating %>
+
+          <% end %>
       <% end %>
-    <% end %>
-  </div>
-
+      <% average = (sum / number_of_bookings).to_f %>
+    </div>
 </div>
