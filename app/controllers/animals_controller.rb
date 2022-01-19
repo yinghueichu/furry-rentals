@@ -20,6 +20,10 @@ class AnimalsController < ApplicationController
     end
   end
 
+  def my_animals
+    @animals = Animal.where(user_id: current_user)
+  end
+
   def show
     @booking = Booking.new
     @markers = [
