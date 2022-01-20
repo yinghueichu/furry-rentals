@@ -1,2 +1,12 @@
-<h2><%= animal.name %></h2>
-<p><%= animal.species %></p>
+<div class="card-window">
+  <div class="overflow-hidden">
+    <%if animal.photo.attached? %>
+      <%= cl_image_tag animal.photo.key%>
+    <% end %>
+  </div>
+  <div class="card-window-infos">
+    <br>
+    <h4><%= animal.name %></h4>
+    <h5><%= animal.species %></h5>
+  </div>
+</div>
