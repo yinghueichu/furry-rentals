@@ -48,10 +48,6 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-
-
-
-
 .card-product img {
   height: 100%;
   width: 120px;
@@ -152,4 +148,15 @@
   color: #5678F7;
   font-weight: bold;
   font-size: 12px;
+//window cart
+.card-window-img {
+  width: 150px;
+}
+
+.card-window {
+  border-radius: 25px;
+}
+
+.link-card {
+  color: $gray
 }
