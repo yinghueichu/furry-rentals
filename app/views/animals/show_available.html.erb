@@ -8,19 +8,8 @@
       <%= f.input :end_date, as: :string, required: true, label: false, input_html: {class: "datepicker", placeholder: "End date", type: "date"} %>
       <%= f.submit 'Book now', class: 'btn btn-primary m-5 align-middle', id: 'btn-booking' %>
     <% end %>
-</div>
-
-
-<div class="container" id="past-bookings">
-    <p><%= @animal.name.capitalize %> has been booked <%= pluralize @animal.bookings.size, "times" %> </p>
-
-    <div id="bookings">
-      <% if @animal.bookings.blank? %>
-        Be the first to book <%= @animal.name.capitalize %> !
-      <% else %>
-        <% @animal.bookings.each do |booking| %>
-          <p>From <%= booking.start_date %> to <%= booking.end_date %> by <%= booking.user.name %> </p>
-        <% end %>
-      <% end %>
-    </div>
+    <% flash.each do |type, msg| %>
+      <div><%= msg %></div>
+    <% end %>
+    <%# <%= @booking.errors %>
 </div>
