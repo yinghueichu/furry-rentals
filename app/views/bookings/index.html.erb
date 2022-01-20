@@ -12,10 +12,14 @@
           <% end %>
         </div>
         <div class="card-booking-infos">
-            <h3><%= booking.animal.name.capitalize %></h3>
+          <div class="d-flex justify-content-start align-items-center">
+            <h3 class="mr-3"><%= booking.animal.name.capitalize %></h3>
+            <%= link_to "Book again", show_available_animal_path(booking.animal), id: "animal-link"%>
+          </div>
             <p><%= booking.animal.species.capitalize %></p>
             <h5><%= booking.start_date %> - <%= booking.end_date %> </h5>
-            <%= link_to "Leave a review", new_review_path(booking), id: "review-link" %>
+            <%= link_to "Leave a review", new_review_path(booking), class: "profile-link" %>
+
         </div>
 
     </div>

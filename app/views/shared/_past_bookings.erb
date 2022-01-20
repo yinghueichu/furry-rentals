@@ -1,0 +1,13 @@
+<div class="container" id="past-bookings">
+    <p><%= @animal.name.capitalize %> has been booked <%= pluralize @animal.bookings.size, "times" %> </p>
+
+    <div id="bookings">
+      <% if @animal.bookings.blank? %>
+        Be the first to book <%= @animal.name.capitalize %> !
+      <% else %>
+        <% @animal.bookings.each do |booking| %>
+          <p>From <%= booking.start_date %> to <%= booking.end_date %> by <%= booking.user.name %> </p>
+        <% end %>
+      <% end %>
+    </div>
+</div>

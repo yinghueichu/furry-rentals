@@ -4,23 +4,9 @@
   </div>
   <div class="date-form">
     <%= simple_form_for [ @animal, @booking ] do |f| %>
-      <%= f.input :start_date, as: :string, required: true, label: false, input_html: {class: "datepicker", placeholder: "Start date", type: "date"}  %>
-      <%= f.input :end_date, as: :string, required: true, label: false, input_html: {class: "datepicker", placeholder: "End date", type: "date"} %>
+      <%= f.error_notification %>
+      <%= f.input :start_date, as: :string, required: true, label: false, input_html: {class: "datepicker", placeholder: "Start date", type: "date"}, error: "check date"  %>
+      <%= f.input :end_date, as: :string, required: true, label: false, input_html: {class: "datepicker", placeholder: "End date", type: "date"}, error: "check date"  %>
       <%= f.submit 'Book now', class: 'btn btn-primary m-5 align-middle', id: 'btn-booking' %>
     <% end %>
-</div>
-
-
-<div class="container" id="past-bookings">
-    <p><%= @animal.name.capitalize %> has been booked <%= pluralize @animal.bookings.size, "times" %> </p>
-
-    <div id="bookings">
-      <% if @animal.bookings.blank? %>
-        Be the first to book <%= @animal.name.capitalize %> !
-      <% else %>
-        <% @animal.bookings.each do |booking| %>
-          <p>From <%= booking.start_date %> to <%= booking.end_date %> by <%= booking.user.name %> </p>
-        <% end %>
-      <% end %>
-    </div>
 </div>
