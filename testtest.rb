@@ -1,26 +1,37 @@
+@bookings = []
 
-class Period
-  def initialize(start_date, end_date)
-    @start_date = start
-    @end_date = end_date
-  end
 
+booking1 = Booking.new(start_date: (Date.today + 8), end_date: (Date.today + 9))
+booking2 = Booking.new(start_date: (Date.today + 4), end_date: (Date.today + 5))
+
+#@booking = Booking.new(start_date: Date.today, end_date: Date.today + 1)
+@booking = Booking.new(start_date: (Date.today + 4), end_date: (Date.today + 6))
+
+@bookings << booking1
+@bookings << booking2
+
+@bookings.count
+
+def check_booking_conflict_1
+    check_results = []
+    @bookings.each do |booking|
+      if @booking.end_date <= booking.start_date || @booking.start_date >= booking.end_date
+        check_result = "no_conflict"
+      else
+        check_result = "conflict"
+      end
+      check_results << check_result
+    end
+    p check_results
+  return "conflict" if check_results.include?("conflict")
 end
 
-puts Booking.first
+def check_booking_conflict_2
+  p @booking
+  @bookings.any? do |booking|
+    @booking.end_date > booking.start_date && @booking.start_date > booking.end_date
+  end
+end
 
-# puts Period.new(Date.today, (Date.today + 1))
-
-# def check_booking_conflict
-#     @bookings = Booking.all
-#     check_results = []
-#     @bookings.each do |booking|
-#       if @booking.end_date > booking.start_date && @booking.start_date > booking.end_date
-#         check_result = true
-#       else
-#         check_result = false
-#       end
-#       check_results << check_result
-#     end
-#   check_results.include?(false)
-# end
+p "method 1 : #{check_booking_conflict_1}"
+p "method 2 : #{check_booking_conflict_2}"

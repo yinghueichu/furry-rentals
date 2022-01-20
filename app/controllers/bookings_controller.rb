@@ -11,25 +11,42 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.animal = @animal
     @booking.user = current_user
-    # raise
-    # if check_booking_conflict
-      if @booking.save
-        redirect_to bookings_path(@animal)
-      else
-        flash[:alert] = "The end date should be greater than start date."
-        redirect_to show_available_animal_path(@animal)
-      end
+    # if check_booking_conflict == false
+    #   if @booking.save
+    #     redirect_to bookings_path(@animal)
+    #   else
+    #     flash[:alert] = "The end date should be greater than start date."
+    #     redirect_to show_available_animal_path(@animal)
+    #   end
     # else
-    #   flash.now[:alert] = "Oups, the dates you select are no longer available."
+    #   flash[:alert] = "Oups, the dates you select are no longer available."
+    #   redirect_to show_available_animal_path(@animal)
     # end
-  end
-
-  def check_booking_conflict
-    @bookings = Booking.all
-    @bookings.any? do |booking|
-       @booking.end_date > booking.start_date && @booking.start_date > booking.end_date
+    if check_booking_conflict
+      flash[:alert] = "Oups, the dates you select are no longer available."
+      redirect_to show_available_animal_path(@animal)
+    elsif @booking.save
+      redirect_to bookings_path(@animal)
+    else
+      flash[:alert] = "The end date should be greater than start date."
+      redirect_to show_available_animal_path(@animal)
     end
   end
+
+
+  def check_booking_conflict
+    @bookings = Booking.all.where(animal_id: @animal.id)
+    check_results = []
+    @bookings.each do |booking|
+      if @booking.end_date <= booking.start_date || @booking.start_date >= booking.end_date
+        check_result = "no conflict"
+      else
+        check_result = "conflict"
+      end
+      check_results << check_result
+    end
+  check_results.include?("conflict")
+end
 
   private
 
