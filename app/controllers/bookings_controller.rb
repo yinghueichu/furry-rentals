@@ -11,17 +11,6 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.animal = @animal
     @booking.user = current_user
-    # if check_booking_conflict == false
-    #   if @booking.save
-    #     redirect_to bookings_path(@animal)
-    #   else
-    #     flash[:alert] = "The end date should be greater than start date."
-    #     redirect_to show_available_animal_path(@animal)
-    #   end
-    # else
-    #   flash[:alert] = "Oups, the dates you select are no longer available."
-    #   redirect_to show_available_animal_path(@animal)
-    # end
     if check_booking_conflict
       flash[:alert] = "Oups, the dates you select are no longer available."
       redirect_to show_available_animal_path(@animal)
