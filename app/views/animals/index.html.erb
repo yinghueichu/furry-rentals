@@ -1,41 +1,23 @@
 
+<div class="container">
 
-<div>
-  <%= form_tag animals_path, method: :get do %>
-    <div class="search-form-control form-group">
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find your animal"
-      %>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-
-</div>
-<div class="main-container">
-  <div class="cards">
-    <% @animals.each do |animal| %>
-      <div class="card">
-        <%if  animal.photo.attached? %>
-          <%= cl_image_tag animal.photo.key%>
-        <% else %>
-          <img src="https://source.unsplash.com/random/300×300/?animal">
-        <% end %>
-        <div class="card-infos">
-          <div class="div">
-            <%= link_to animal.name, animal_path(animal), style: "color: black" %>
-            <%= animal.species %>
-          </div>
-          <h2 class="card-availabilty">available</h2>
-          <%#<img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-user avatar-bordered" />  %>
-        </div>
+  <div>
+    <%= form_tag animals_path, method: :get do %>
+      <div class="search-form-control form-group">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find your animal"
+        %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
       </div>
     <% end %>
+
   </div>
+
+</div>
   <div id="map"
-    style="width: 40%; height: 600px;"
+    style="width: 100%; height: 600px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-</div>

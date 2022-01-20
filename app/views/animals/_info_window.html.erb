@@ -1,2 +1,16 @@
-<h2><%= animal.name %></h2>
-<p><%= animal.species %></p>
+<%= link_to animal_path(animal), class:"link-card" do %>
+<div class="card-window">
+  <div class="overflow-hidden">
+    <%if animal.photo.attached? %>
+      <%= cl_image_tag animal.photo.key%>
+    <% else %>
+          <img src="https://source.unsplash.com/random/250x250/?animal">
+    <% end %>
+  </div>
+  <div class="card-window-infos">
+    <br>
+    <h4><%= animal.name %></h4>
+    <h5><%= animal.species %></h5>
+  </div>
+</div>
+<% end %>
