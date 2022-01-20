@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="title"><h2>My animals</h2></div>
+  <div class="new-animal-btn">
+    <%= link_to "Put new animal up for rent", new_animal_path, class: "btn btn-primary btn-floating" %>
+  </div>
+
+  <div class="bookings">
+  <% @animals.each do |animal| %>
+      <div class="card-booking">
+        <div class="card-animal-img">
+          <%if  animal.photo.attached? %>
+            <%= cl_image_tag animal.photo.key%>
+          <% else %>
+            <img src="https://source.unsplash.com/random/300×300/?animal">
+          <% end %>
+        </div>
+        <div class="card-booking-infos">
+            <h3><%= animal.name.capitalize %></h3>
+            <p><%= animal.species.capitalize %></p>
+            <br>
+            <%= link_to "Go to profile", animal_path(animal), class: "profile-link" %>
+            <div id="update-available-link">
+              <%= link_to "Update availability", edit_animal_path(animal), class: "profile-link", id: "update-available-link"%>
+            </div>
+        </div>
+
+    </div>
+
+
+  <% end %>
+  </div>
+</div>

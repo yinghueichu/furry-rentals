@@ -7,7 +7,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-import 'controllers'
+// import 'controllers'
 
 Rails.start()
 Turbolinks.start()
@@ -37,33 +37,30 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
 });
 
-// ./packs/application.js
-import { Application } from 'stimulus'
-import { definitionsFromContext } from 'stimulus/webpack-helpers'
+// import { Application } from 'stimulus'
+// import { definitionsFromContext } from 'stimulus/webpack-helpers'
 
-const application = Application.start()
-const context = require.context('../controllers', true, /\.js$/)
-application.load(definitionsFromContext(context))
+// const application = Application.start()
+// // const context = require.context("./controllers", true, /\.js$/)
 
-// import Flatpickr
-import Flatpickr from 'stimulus-flatpickr'
+// // Import style for flatpickr
+// require("flatpickr/dist/flatpickr.css")
 
-// Import style for flatpickr
-require("flatpickr/dist/flatpickr.css")
+// // // Manually register Flatpickr as a stimulus controller
+// const Flatpickr = require('flatpickr');
+// application.register('flatpickr', Flatpickr)
 
-// Manually register Flatpickr as a stimulus controller
-application.register('flatpickr', Flatpickr)
-flatpickr(".datepicker", {
-  minDate: new Date,
-  altInput: true,
-});
+// flatpickr(".datepicker", {
+//   minDate: new Date,
+//   altInput: true,
+// });
 
-$('.btn-group a').on('click', function (event) {
-  event.preventDefault();
-  var input = $(this).siblings('.control-group').find('input[type=hidden]');
-  if (input.length > 0) {
-    if (input.val().toString() !== $(this).data('value').toString()) {
-      input.val($(this).data('value')).trigger('change');
-    }
-  }
-});
+// $('.btn-group a').on('click', function (event) {
+//   event.preventDefault();
+//   var input = $(this).siblings('.control-group').find('input[type=hidden]');
+//   if (input.length > 0) {
+//     if (input.val().toString() !== $(this).data('value').toString()) {
+//       input.val($(this).data('value')).trigger('change');
+//     }
+//   }
+// });

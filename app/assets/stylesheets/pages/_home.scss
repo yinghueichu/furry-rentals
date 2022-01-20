@@ -5,27 +5,18 @@
   top: 0;
 }
 
-.div_wrapper {
-  min-height: calc(100vh - 100px - 85px);
-  padding: 20px 0px 20px 50px;
-  display: flex;
-  align-items: center;
-}
-
 .catchphrase {
-  font-family: Archivo-black;
-  font-weight: 700;
+  font-family: 'Archivo Black', sans-serif;
   font-size: 24px;
   line-height: 26.11px;
-  font-style: bold;
-  color: #4A6163;
+  color: white;
   align-items: left;
   vertical-align: top;
   word-spacing: 10px;
 }
 
 .catchphrase-container {
-  height: 30vh;
+  height: 80vh;
   display: flex;
   align-items: center;
   margin-left: 10vw;
@@ -36,9 +27,18 @@
   align-items: center;
 }
 
-.cat-image {
-  height: 50vh;
+.banner {
+  background-image: url('https://res.cloudinary.com/le-wagon-caddie/image/upload/v1642590633/dtswobkesqkh1mie5v42.png');
+  background-size: 90%;
+  background-position: right;
+  background-repeat: no-repeat;
+  height: 600px;
+  width: 375px;
 }
+
+// .cat-image {
+//   height: 50vh;
+// }
 
 .cards {
   display: grid;
@@ -62,4 +62,9 @@
   .cards {
     grid-template-columns: 1fr;
   }
+}
+
+.div_wrapper {
+  min-height: calc(100vh - 100px - 85px);
+  align-items: center;
 }
