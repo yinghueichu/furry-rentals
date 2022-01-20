@@ -18,10 +18,10 @@
             <h3><%= animal.name.capitalize %></h3>
             <p><%= animal.species.capitalize %></p>
             <br>
-            <%= link_to "Go to profile", animal_path(animal), id: "profile-link" %>
-            <br>
-            <br>
-            <%= link_to "Update availability", edit_animal_path(animal), id: "profile-link"%>
+            <%= link_to "Go to profile", animal_path(animal), class: "profile-link" %>
+            <div id="update-available-link">
+              <%= link_to "Update availability", edit_animal_path(animal), class: "profile-link", id: "update-available-link"%>
+            </div>
         </div>
 
     </div>
