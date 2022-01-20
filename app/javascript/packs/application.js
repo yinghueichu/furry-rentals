@@ -46,7 +46,7 @@ document.addEventListener('turbolinks:load', () => {
 // // Import style for flatpickr
 // require("flatpickr/dist/flatpickr.css")
 
-// // Manually register Flatpickr as a stimulus controller
+// // // Manually register Flatpickr as a stimulus controller
 // const Flatpickr = require('flatpickr');
 // application.register('flatpickr', Flatpickr)
 

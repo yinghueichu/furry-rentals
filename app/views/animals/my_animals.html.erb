@@ -17,6 +17,8 @@
         <div class="card-booking-infos">
             <h3><%= animal.name.capitalize %></h3>
             <p><%= animal.species.capitalize %></p>
+            <br>
+            <%= link_to "Go to profile", animal_path(animal), id: "profile-link" %>
         </div>
 
     </div>
