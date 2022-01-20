@@ -7,7 +7,9 @@ class Period
 
 end
 
-puts Period.new(Date.today, (Date.today + 1))
+puts Booking.first
+
+# puts Period.new(Date.today, (Date.today + 1))
 
 # def check_booking_conflict
 #     @bookings = Booking.all
