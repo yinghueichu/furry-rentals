@@ -34,8 +34,8 @@ class BookingsController < ApplicationController
       end
       check_results << check_result
     end
-  check_results.include?("conflict")
-end
+    check_results.include?("conflict")
+  end
 
   private
 
