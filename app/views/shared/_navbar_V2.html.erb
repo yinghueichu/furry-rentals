@@ -24,24 +24,33 @@
       <% end %>
 
 
-        <span class="material-icons md-36" style="color: white" id="close-overlay">clear</span>
+        <span class="material-icons md-36" style="color: white" id="btn-close-overlay">clear</span>
 
   </div>
 </div>
 
 <script>
 
-  // const trigger = document.querySelector('.trigger');
+  var trigger = document.querySelector('.trigger');
   var overlay = document.querySelector('.overlay-menu');
 
   // trigger.addEventListener('click', () => overlay.classList.add('open-overlay'));
 
-  function on() {
-  overlay.style.display = "block";
-}
+  // function on() {
+  //   overlay.style.display = "block";
+  // }
 
-function off() {
-  overlay.style.display = "none";
-}
+  // function off() {
+  //   overlay.style.display = "none";
+  // }
+
+ function on() {
+    overlay.classList.add('open-overlay');
+  }
+
+  function off() {
+    overlay.classList.remove('open-overlay');
+  }
+
 
 </script>
