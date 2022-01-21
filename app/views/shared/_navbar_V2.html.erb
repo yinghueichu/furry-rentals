@@ -1,0 +1,47 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<div class="container-navbar">
+  <div class="navbar-items">
+    <div class="d-flex justify-content-between">
+      <%= link_to "FURRY RENTALS", animals_path, id: "brand-name" %>
+    <div class="trigger" onclick="on()">
+      <span class="material-icons md-36 trigger" style="color: white">menu</span>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="container-overlay">
+  <div class="overlay-menu" onclick="off()">
+
+      <% if user_signed_in? %>
+
+        <%= link_to "My animals", my_animals_animals_path(current_user), class: "dropdown-item" %>
+        <%= link_to "My bookings", bookings_path(current_user), class: "dropdown-item" %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path, class: "dropdown-item" %>
+        <%= link_to "Log in", new_user_session_path, class: "dropdown-item" %>
+      <% end %>
+
+
+        <span class="material-icons md-36" style="color: white" id="close-overlay">clear</span>
+
+  </div>
+</div>
+
+<script>
+
+  // const trigger = document.querySelector('.trigger');
+  var overlay = document.querySelector('.overlay-menu');
+
+  // trigger.addEventListener('click', () => overlay.classList.add('open-overlay'));
+
+  function on() {
+  overlay.style.display = "block";
+}
+
+function off() {
+  overlay.style.display = "none";
+}
+
+</script>
