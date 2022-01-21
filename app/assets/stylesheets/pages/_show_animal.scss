@@ -7,6 +7,7 @@
 .animal-img img{
   height: 200px;
   width: auto;
+  border-radius: 10px;
 }
 
 #animal-profile {
@@ -15,6 +16,11 @@
   background-color: #ffffff;
   padding-top: 32px;
   padding-bottom: 32px;
+  margin-bottom: 100px;
+}
+
+body{
+    overflow-x: hidden;
 }
 
 .animal-info {
@@ -24,7 +30,7 @@
     font-weight: bold;
   }
   p {
-    font-size: 12px;
+    font-size: 16px;
     margin-bottom: 8px;
   }
 }
