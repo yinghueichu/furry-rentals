@@ -9,7 +9,18 @@
   padding: 0px;
 }
 
-#map {
-  margin-top: 32px;
-  margin-bottom: 32px;
+// #map {
+  // margin-top: 32px;
+  // margin-bottom: 32px;
+// }
+
+.container-map {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  position: absolute;
+  z-index: 1;
+  margin-top: 16px;
 }
