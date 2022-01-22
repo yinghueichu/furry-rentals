@@ -35,6 +35,7 @@
   align-items: left;
   vertical-align: top;
   word-spacing: 10px;
+  text-align: left;
 }
 
 .catchphrase-container {
@@ -58,7 +59,7 @@
   background-repeat: no-repeat;
   height: 601px;
   width: 382px;
-  margin-top: 32px;
+  margin-top: 40px;
 }
 
 .cards {
@@ -88,4 +89,14 @@
 .div_wrapper {
   min-height: calc(100vh - 100px - 85px);
   align-items: center;
+}
+
+.container-home-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#btn-home {
+  margin-right: 12px;
 }
