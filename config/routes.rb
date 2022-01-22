@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   resources :bookings do
     member do
       resources :reviews, only: [:new, :create]

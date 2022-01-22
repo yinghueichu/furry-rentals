@@ -21,7 +21,7 @@
 
     <div class="animal-info">
       <h5><%= @animal.species %></h5>
-      <p>Owner: <%= @animal.user.name %></p>
+      <p>Owner: <%= @animal.user.name.nil? ? "Nicolas" : @animal.user.name %></p>
       <p><%= @animal.description %></p>
     </div>
     <hr/>
@@ -38,7 +38,7 @@
             <div id="card-review">
               <P><i class="fas fa-star"></i> <%= booking.review.rating %> </P>
               <P><%= booking.review.content %></P>
-              <p>by <%= booking.user.name%></p>
+              <p>by <%= booking.user.name.nil? ? "Manon" : booking.user.name %></p>
             </div>
 
             <% sum = sum + booking.review.rating %>
