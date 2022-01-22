@@ -29,8 +29,6 @@
       var rating = $(this).attr('data-stars');
       var form_id = $(this).attr('id');
 
-
-
       for(i=1; i<=5; i++) {
         if( i<= rating) {
           $('#s'+i).removeClass('far fa-star').addClass('fas fa-star');
@@ -39,20 +37,10 @@
         }
       }
 
-
-
       $('#stars').val(rating);
       console.log($('#stars').val());
 
-      // $.ajax ({
-      //   type: "post",
-      //   url: $('#new_review').attr('action'),
-      //   data: $('#new_review').serialize()
-      // });
-
     });
   });
-
-
 
 </script>
