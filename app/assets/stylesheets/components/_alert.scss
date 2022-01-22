@@ -1,6 +1,18 @@
-.alert .notice {
+.alert {
   // position: fixed;
   // bottom: 16px;
   // right: 16px;
   color: white;
+  padding: 0px !important;
+  // border: 0px !important;
+  // height: 0px !important;
+}
+
+.notice {
+  // position: fixed;
+  // bottom: 16px;
+  // right: 16px;
+  color: white;
+  // padding: 0px !important;
+  // height: 0px !important;
 }

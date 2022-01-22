@@ -1,7 +1,11 @@
 <div class="container" id="new-booking">
-  <div class="title">
+  <div class="title-booking">
     <h2>Book <%= @animal.name %> now!</h2>
   </div>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
   <div class="date-form">
     <%= simple_form_for [ @animal, @booking ] do |f| %>
       <%= f.error_notification %>
