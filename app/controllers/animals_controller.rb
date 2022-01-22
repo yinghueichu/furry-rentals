@@ -13,11 +13,20 @@ class AnimalsController < ApplicationController
     end
 
     if params[:query].present?
-      sql_query = "name ILIKE :query OR species ILIKE :query"
+
+      sql_query = "address ILIKE :query OR species ILIKE :query"
       @animals = Animal.where(sql_query, query: "%#{params[:query]}%")
+      @markers = @animals.geocoded.map do |animal|
+        {
+          lat: animal.latitude,
+          lng: animal.longitude,
+          info_window: render_to_string(partial: "info_window", locals: { animal: animal })
+        }
+    end
     else
       @animals = Animal.all
     end
+
   end
 
   def my_animals
