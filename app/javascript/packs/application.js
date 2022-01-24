@@ -64,3 +64,30 @@ document.addEventListener('turbolinks:load', () => {
 //     }
 //   }
 // });
+
+import $ from 'jquery';
+window.jQuery = $;
+window.$ = $;
+
+$(document).ready(function () {
+  console.log("document ready!");
+  $(function () {
+    $('.rating_star').click(function () {
+      var star = $(this);
+      var rating = $(this).attr('data-stars');
+      var form_id = $(this).attr('id');
+
+      for (i = 1; i <= 5; i++) {
+        if (i <= rating) {
+          $('#s' + i).removeClass('far fa-star').addClass('fas fa-star');
+        } else {
+          $('#s' + i).removeClass('fas fa-star').addClass('far fa-star');
+        }
+      }
+
+      $('#stars').val(rating);
+      console.log($('#stars').val());
+
+    });
+  });
+});
