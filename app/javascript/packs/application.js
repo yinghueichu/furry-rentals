@@ -69,6 +69,53 @@ import $ from 'jquery';
 window.jQuery = $;
 window.$ = $;
 
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("DOMContentLoaded");
+  $(function () {
+    $('.rating_star').click(function () {
+      var star = $(this);
+      var rating = $(this).attr('data-stars');
+      var form_id = $(this).attr('id');
+
+      for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+          $('#s' + i).removeClass('far fa-star').addClass('fas fa-star');
+        } else {
+          $('#s' + i).removeClass('fas fa-star').addClass('far fa-star');
+        }
+      }
+
+      $('#stars').val(rating);
+      console.log($('#stars').val());
+
+    });
+  });
+});
+
+document.addEventListener('turbolinks:load', function () {
+  console.log("turbolinks ready!");
+  $(function () {
+    $('.rating_star').click(function () {
+      var star = $(this);
+      var rating = $(this).attr('data-stars');
+      var form_id = $(this).attr('id');
+
+      for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+          $('#s' + i).removeClass('far fa-star').addClass('fas fa-star');
+        } else {
+          $('#s' + i).removeClass('fas fa-star').addClass('far fa-star');
+        }
+      }
+
+      $('#stars').val(rating);
+      console.log($('#stars').val());
+
+    });
+  });
+});
+
+
 $(document).ready(function () {
   console.log("document ready!");
   $(function () {
@@ -77,7 +124,7 @@ $(document).ready(function () {
       var rating = $(this).attr('data-stars');
       var form_id = $(this).attr('id');
 
-      for (i = 1; i <= 5; i++) {
+      for (let i = 1; i <= 5; i++) {
         if (i <= rating) {
           $('#s' + i).removeClass('far fa-star').addClass('fas fa-star');
         } else {
