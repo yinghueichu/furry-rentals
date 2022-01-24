@@ -13,7 +13,7 @@
     <h2 id="animal-name"><%= @animal.name %></h2>
     <div class="rating-details d-flex justify-content-start">
       <h5><i class="fas fa-star" id="rating-star"></i></h5>
-      <P>&nbsp;&nbsp;4.58 (12 reviews)</P>
+      <P>&nbsp;&nbsp;<%= @reviews_by_animal.count == 0 ? "" : @rating_average %> (<%= @reviews_by_animal.count %> reviews)</P>
     </div>
 
 
