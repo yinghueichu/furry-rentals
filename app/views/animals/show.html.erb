@@ -15,8 +15,6 @@
       <h5><i class="fas fa-star" id="rating-star"></i></h5>
       <P>&nbsp;&nbsp;<%= @reviews_by_animal.count == 0 ? "" : @rating_average %> (<%= @reviews_by_animal.count %> reviews)</P>
     </div>
-
-
   </div>
 
     <div class="animal-info">
@@ -26,13 +24,10 @@
     </div>
     <hr/>
 
-
     <div id="map" style="width: 100%; height: 200px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
     <hr/>
     <div class="reviews">
-    <% sum = 0 %>
-    <% number_of_bookings = @animal.bookings.count %>
       <% @animal.bookings.order(created_at: :desc).each do |booking|  %>
           <% if booking.review.blank? == false %>
             <div id="card-review">
@@ -40,11 +35,7 @@
               <P><%= booking.review.content %></P>
               <p>by <%= booking.user.name.nil? ? "Manon" : booking.user.name %></p>
             </div>
-
-            <% sum = sum + booking.review.rating %>
-
           <% end %>
       <% end %>
-      <%# <% average = (sum / number_of_bookings).to_f if booking.review.blank? == false %>
     </div>
 </div>
