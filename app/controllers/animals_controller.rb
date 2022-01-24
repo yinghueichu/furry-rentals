@@ -13,7 +13,6 @@ class AnimalsController < ApplicationController
     end
 
     if params[:query].present?
-
       sql_query = "address ILIKE :query OR species ILIKE :query"
       @animals = Animal.where(sql_query, query: "%#{params[:query]}%")
       @markers = @animals.geocoded.map do |animal|
@@ -41,6 +40,7 @@ class AnimalsController < ApplicationController
         lng: @animal.longitude,
         info_window: render_to_string(partial: "info_window", locals: { animal: @animal })
       }]
+    rating_average
   end
 
   def new
@@ -83,5 +83,12 @@ class AnimalsController < ApplicationController
 
   def strong_params
     params.require(:animal).permit(:name, :species, :address, :description, :available, :photo)
+  end
+
+  def rating_average
+    @reviews = Review.all
+    @reviews_by_animal = @reviews.select { |review| review.booking.animal == @animal }
+    ratings_by_animal = @reviews_by_animal.map(&:rating)
+    @rating_average = ratings_by_animal.sum.fdiv(@reviews_by_animal.count)
   end
 end
